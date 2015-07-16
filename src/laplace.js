@@ -37,6 +37,10 @@ export class Laplace {
         return 1/(2 * this.b) * Math.exp(-Math.abs(x - this.sigma)/this.b);
     }
 
+    skewness(){
+        return 0;
+    }
+
     sample(){
         let x = random()-0.5;
         let ex = -2 * x;
