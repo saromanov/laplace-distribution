@@ -33,8 +33,8 @@ export class Laplace {
     }
 
     compute(){
-        let x = random();
-        return 1/(2 * this.b) * Math.exp(-Math.abs(x - this.sigma)/this.b);
+        let x = random(this.mu, this.b);
+        return 1/(2 * this.b) * Math.exp(-Math.abs(x - this.mu)/this.b);
     }
 
     skewness(){
@@ -42,7 +42,7 @@ export class Laplace {
     }
 
     sample(){
-        let x = random()-0.5;
+        let x = random(this.mu, this.b)-0.5;
         let ex = -2 * x;
         let scale = -this.b;
         if (x < 0) {
@@ -54,9 +54,9 @@ export class Laplace {
 }
 
 //Generate random value
-var random = function(n=1){
+var random = function(start, end, n=1){
     if(n == 1){
-        return Math.random();
+        return Math.random() * (end - start) + start;
     }
 }
 
