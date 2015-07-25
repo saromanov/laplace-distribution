@@ -34,9 +34,15 @@ export class Laplace {
         return 1 + Math.log(2 * this.b);
     }
 
-    compute(){
-        let x = random(this.mu, this.b);
-        return 1/(2 * this.b) * Math.exp(-Math.abs(x - this.mu)/this.b);
+    compute(n=1){
+        if(n == 1)
+        {
+            let x = random(this.mu, this.b);
+            return laplace_compute(x, this.mu, this.b);
+        } else {
+            let xlist = random(this.mu, this.b, n=n);
+            return xlist.map(laplace_compute);
+        }
     }
 
     skewness(){
@@ -60,5 +66,9 @@ var random = function(start, end, n=1){
     if(n == 1){
         return Math.random() * (end - start) + start;
     }
+}
+
+var laplace_compute = function(x, mu, sigma){
+    return 1/(2 * sigma) * Math.exp(-Math.abs(x - mu)/sigma);
 }
 
