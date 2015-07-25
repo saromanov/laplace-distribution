@@ -7,8 +7,10 @@ export class Laplace {
     }
 
     CDF(x){
-        if(Number.isNaN(x))
+        if(Number.isNaN(x)){
             return 0;
+        }
+
         if(x < this.mu) {
             return 0.5 * Math.exp((x - this.mu)/this.b);
         } else {
@@ -46,7 +48,7 @@ export class Laplace {
         let ex = -2 * x;
         let scale = -this.b;
         if (x < 0) {
-            ex = 2 * x
+            ex = 2 * x;
             scale = this.b;
         }
         return this.mu + scale * Math.log(1+ex);
