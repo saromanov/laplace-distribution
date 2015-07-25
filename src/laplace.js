@@ -63,8 +63,15 @@ export class Laplace {
 
 //Generate random value
 var random = function(start, end, n=1){
-    if(n == 1){
+    if(n <= 1){
         return Math.random() * (end - start) + start;
+    }
+    else if(n > 1){
+        let result = [];
+        for(let i = 0;i < n;++i) {
+            result.push(random(start, end));
+        }
+        return result;
     }
 }
 
