@@ -41,7 +41,7 @@ export class Laplace {
             return laplace_compute(x, this.mu, this.b);
         } else {
             let xlist = random(this.mu, this.b, n=n);
-            return xlist.map(laplace_compute);
+            return xlist.map(x => laplace_compute(x, this.mu, this.b));
         }
     }
 
