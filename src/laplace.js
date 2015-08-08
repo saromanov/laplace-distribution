@@ -50,15 +50,11 @@ export class Laplace {
         return 0;
     }
 
-    sample(){
-        let x = random(this.mu, this.b)-0.5;
-        let ex = -2 * x;
-        let scale = -this.b;
-        if (x < 0) {
-            ex = 2 * x;
-            scale = this.b;
-        }
-        return this.mu + scale * Math.log(1+ex);
+    sample(n){
+        let nums = random(0,1,n=n).map(x => x - 0.5);
+        let value = this.b/Math.sqrt(2);
+        let second = nums.map(x => value * sign(x) * Math.log(1 - 2 * Math.abs(x)));
+        return second.map(x => this.mu - x); 
     }
 }
 
@@ -78,5 +74,17 @@ var random = function(start, end, n=1){
 
 var laplace_compute = function(x, mu, sigma){
     return 1/(2 * sigma) * Math.exp(-Math.abs(x - mu)/sigma);
+}
+
+var sign = function(item) {
+    if(item > 0) {
+        return 1;
+    }
+
+    if(item < 0) {
+        return -1;
+    }
+
+    return 0;
 }
 
