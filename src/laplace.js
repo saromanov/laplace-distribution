@@ -34,6 +34,7 @@ export class Laplace {
         return 1 + Math.log(2 * this.b);
     }
 
+    //Return PDF
     compute(n=1){
         if(n == 1)
         {
