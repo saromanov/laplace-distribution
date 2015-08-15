@@ -26,6 +26,10 @@ export class Laplace {
         return this.mu;
     }
 
+    Mode(){
+        return this.mu;
+    }
+
     Var(){
         return 2 * Math.pow(this.b,2);
     }
