@@ -52,6 +52,10 @@ export class Laplace {
 
     //Sample from laplace distribution
     sample(n){
+        if(n === 0) {
+            return 0;
+        }
+
         let nums = random(0,1,n=n).map(x => x - 0.5);
         let value = this.b/Math.sqrt(2);
         let second = nums.map(x => value * sign(x) * Math.log(1 - 2 * Math.abs(x)));
