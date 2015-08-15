@@ -39,7 +39,7 @@ export class Laplace {
     }
 
     //Return PDF
-    compute(n=1){
+    PDF(n=1){
         if(n == 1)
         {
             let x = random(this.mu, this.b);
