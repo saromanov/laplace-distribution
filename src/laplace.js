@@ -50,6 +50,7 @@ export class Laplace {
         return 0;
     }
 
+    //Sample from laplace distribution
     sample(n){
         let nums = random(0,1,n=n).map(x => x - 0.5);
         let value = this.b/Math.sqrt(2);
